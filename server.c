@@ -47,9 +47,13 @@ int main(int argc, char* argv[]) {
     socklen_t client_addr_len;
     client_addr_len = sizeof(client_addr);
 
+    memset(&server_addr, 0, sizeof(server_addr));
     server_addr.sin_family = AF_INET;
     server_addr.sin_port = htons(port);
     server_addr.sin_addr.s_addr = INADDR_ANY;
+
+    int optval = 1;
+    setsockopt(server_socket, SOL_SOCKET, SO_REUSEADDR, &optval, sizeof(optval));
 
     if (bind(server_socket, (struct sockaddr*) &server_addr, sizeof(server_addr)) == -1) {
         perror("Error binding server socket");
