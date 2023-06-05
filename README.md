@@ -12,6 +12,7 @@
 > ### URL
 > ```
 > https://sites.google.com/chromium.org/driver/
+> 경로에 맞게 driver 설정필요
 
 ## How to complie
 > ### Server
